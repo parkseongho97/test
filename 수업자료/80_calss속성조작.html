@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class속성조작</title>
+    <style>
+        .font{
+        font-size: 30px;
+        color: red;
+        }
+        .border{
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+        .bgcolor{
+            background-color: yellow;
+        }
+    </style>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+</head>
+<body>
+    <ul id="menu">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+    </ul>
+
+    <script>
+      // class 추가 : 객체.classList.add("class명")
+      // class 제거 : 객체.classList.remove("class명")
+      // class 토글 : 객체.classList.toggle("class명")
+      // class 유무 판별 : 객체.classList.contains("class명")
+
+        // class를 추가해주는 스크립트문
+
+        // let elLi = document.querySelectorAll("#menu > li")
+        // elLi.forEach(function(value,index){
+        //     value.classList.add("font");
+        //     value.classList.add("border");
+        // })
+
+        let elLi = document.querySelectorAll("#menu > li")
+        elLi.forEach(function(value,index){
+            value.classList.add("font");
+            value.classList.add("border");
+        });
+
+        elLi.forEach(function(value,index){
+            value.onclick = function(){
+                if(this.classList.contains("font")){
+                    this.classList.remove("font");
+                } else{
+                    this.classList.add("font");
+                }
+            }
+        });
+
+        $("#menu > li").on("click",function(){
+            $(this).addClass("bgcolor");
+            $(this).siblings().removeClass("bgcolor");
+        });
+    </script>
+</body>
+</html>
